@@ -33,6 +33,8 @@ public class CartSessionController {
     public String postMapping(@RequestBody MultiValueMap<String,String> form, Model model, HttpSession session) {
         String name = form.getFirst("name");
         String item = form.getFirst("item");
+        //Treat session like a map (dictionary)
+        //Below line means get value from the key 'cart' in the Session map, then cast it into a list of strings
         List<String> cart = (List<String>)session.getAttribute("cart");
         if (null == cart) {
             //If cart is null, then start new session
